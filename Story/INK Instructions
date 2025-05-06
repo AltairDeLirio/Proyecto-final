@@ -1,0 +1,6 @@
+Utiliza "EXTERNAL nombreDelCodigo(tag)" al principio para denotar que el INK debe utilizar codigo del .cs
+Ejemplo: EXTERNAL Name(charName)
+Denotar nombre del personaje hablando: ~ Name("nombre")
+Denotar sprite del personaje presente: ~ CharIcon("nombre")
+Denotar emocion del sprite del personaje presente: ~ Expression("name")  // es el segundo nombre en el sprite, ejemplo: kid_smile >> kid es el nombre del sprite de personaje y smile es la expression
+Para esconder personaje: ~ HideCharacter("name") //solo puede haber un maximo de 2 personajes en la escena >> asegurar que si se quiere introducir un tercer personaje, se esconda uno de los ya presentes
