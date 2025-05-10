@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ScriptReader : MonoBehaviour
 {
@@ -35,7 +36,13 @@ public class ScriptReader : MonoBehaviour
     {
         _StoryScript = new Story(_InkJsonFile.text);
 
-        // Bind Ink functions to Unity methods
+        // restore story when changing from other scene
+        if (PlayerPrefs.HasKey("Game"))
+        {
+            string savedState = PlayerPrefs.GetString("Game");
+            _StoryScript.state.LoadJson(savedState);
+        }
+
         _StoryScript.BindExternalFunction("Name", (string charName) => ChangeName(charName));
         _StoryScript.BindExternalFunction("CharacterIcon", (string charName) => ShowCharacter(charName));
         _StoryScript.BindExternalFunction("HideCharacter", (string charName) => HideCharacter(charName));
@@ -48,9 +55,27 @@ public class ScriptReader : MonoBehaviour
     {
         if (_StoryScript.canContinue)
         {
-            string text = _StoryScript.Continue();
-            text = text?.Trim();
+            string text = _StoryScript.Continue()?.Trim();
             dialogueBox.text = text;
+
+            // Process scene change tags
+            List<string> tags = _StoryScript.currentTags;
+            foreach (string tag in tags)
+            {
+                if (tag.StartsWith("change_scene:"))
+                {
+                    string targetScene = tag.Split(':')[1].Trim();
+
+                    // Save story state
+                    PlayerPrefs.SetString("Game", _StoryScript.state.ToJson());
+                    PlayerPrefs.SetString("InkCurrentKnot", _StoryScript.currentPathString);
+                    PlayerPrefs.Save();
+
+                    // Load new Unity scene
+                    SceneManager.LoadScene(targetScene);
+                    return;
+                }
+            }
         }
         else
         {
@@ -74,7 +99,6 @@ public class ScriptReader : MonoBehaviour
 
         characterSprites[charName] = characterIconSprite;
 
-        // Display based on how many are active
         List<string> activeCharacters = new List<string>(characterSprites.Keys);
 
         if (activeCharacters.Count == 1)
@@ -83,7 +107,7 @@ public class ScriptReader : MonoBehaviour
             characterIconRight.gameObject.SetActive(false);
 
             characterIconLeft.sprite = characterIconSprite;
-            characterIconLeft.rectTransform.anchoredPosition = Vector2.zero; // Center
+            characterIconLeft.rectTransform.anchoredPosition = Vector2.zero;
         }
         else if (activeCharacters.Count == 2)
         {
@@ -95,8 +119,6 @@ public class ScriptReader : MonoBehaviour
 
             characterIconLeft.sprite = characterSprites[first];
             characterIconRight.sprite = characterSprites[second];
-
-            // Optional: adjust positions for symmetry
         }
     }
 
@@ -135,7 +157,6 @@ public class ScriptReader : MonoBehaviour
 
     public void ChangeCharacterExpression(string expressionName)
     {
-        // For simplicity, apply to both if they're the same character
         foreach (var key in new List<string>(characterSprites.Keys))
         {
             string path = "CharacterIcons/Expressions/" + key + "_" + expressionName;
