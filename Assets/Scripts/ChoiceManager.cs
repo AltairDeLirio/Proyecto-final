@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using Ink.Runtime;
 
-public class InkDialogueManager : MonoBehaviour
+public class ChoiceManager : MonoBehaviour
 {
     public TextAsset inkJSONAsset;
     private Story story;

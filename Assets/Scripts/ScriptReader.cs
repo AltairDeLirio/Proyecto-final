@@ -17,7 +17,15 @@ public class ScriptReader : MonoBehaviour
     public Image characterIconLeft;
     public Image characterIconRight;
 
+    public Button[] choiceButtons;
+    public float timeLimit = 5f;
+
+    public Slider choiceTimerSlider;
+
     private Dictionary<string, Sprite> characterSprites = new Dictionary<string, Sprite>();
+    private float timeRemaining;
+    private bool timerRunning = false;
+    private bool choiceMade = false;
 
     void Start()
     {
@@ -26,7 +34,24 @@ public class ScriptReader : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (_StoryScript == null) return;
+
+        if (timerRunning && !choiceMade)
+        {
+            timeRemaining -= Time.deltaTime;
+
+            if (choiceTimerSlider != null)
+                choiceTimerSlider.value = Mathf.Max(0, timeRemaining);
+
+            if (timeRemaining <= 0)
+            {
+                timerRunning = false;
+                AutoChooseFallback();
+            }
+        }
+
+        if (_StoryScript.currentChoices.Count == 0 &&
+            (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
         {
             DisplayNextLine();
         }
@@ -36,7 +61,6 @@ public class ScriptReader : MonoBehaviour
     {
         _StoryScript = new Story(_InkJsonFile.text);
 
-        // restore story when changing from other scene
         if (PlayerPrefs.HasKey("Game"))
         {
             string savedState = PlayerPrefs.GetString("Game");
@@ -58,29 +82,121 @@ public class ScriptReader : MonoBehaviour
             string text = _StoryScript.Continue()?.Trim();
             dialogueBox.text = text;
 
-            // Process scene change tags
             List<string> tags = _StoryScript.currentTags;
             foreach (string tag in tags)
             {
                 if (tag.StartsWith("change_scene:"))
                 {
                     string targetScene = tag.Split(':')[1].Trim();
-
-                    // Save story state
                     PlayerPrefs.SetString("Game", _StoryScript.state.ToJson());
                     PlayerPrefs.SetString("InkCurrentKnot", _StoryScript.currentPathString);
                     PlayerPrefs.Save();
-
-                    // Load new Unity scene
                     SceneManager.LoadScene(targetScene);
                     return;
                 }
+            }
+
+            if (_StoryScript.currentChoices.Count > 0)
+            {
+                ShowChoices();
+            }
+            else
+            {
+                HideAllChoices();
             }
         }
         else
         {
             dialogueBox.text = "The end";
+            HideAllChoices();
         }
+    }
+
+    void ShowChoices()
+    {
+        HideAllChoices();
+
+        bool isTimed = _StoryScript.currentTags.Contains("timed");
+
+        for (int i = 0; i < choiceButtons.Length; i++)
+        {
+            if (i < _StoryScript.currentChoices.Count)
+            {
+                Choice choice = _StoryScript.currentChoices[i];
+                Button btn = choiceButtons[i];
+
+                btn.gameObject.SetActive(true);
+                btn.GetComponentInChildren<TextMeshProUGUI>().text = choice.text;
+
+                int index = i;
+                btn.onClick.RemoveAllListeners();
+                btn.onClick.AddListener(() => MakeChoice(index));
+            }
+        }
+
+        if (isTimed)
+        {
+            StartTimer();
+        }
+        else
+        {
+            ResetTimer();
+        }
+    }
+
+    void MakeChoice(int choiceIndex)
+    {
+        if (choiceIndex < 0 || choiceIndex >= _StoryScript.currentChoices.Count)
+            return;
+
+        choiceMade = true;
+        _StoryScript.ChooseChoiceIndex(choiceIndex);
+        ResetTimer();
+        DisplayNextLine();
+    }
+
+    void StartTimer()
+    {
+        timeRemaining = timeLimit;
+        timerRunning = true;
+        choiceMade = false;
+
+        if (choiceTimerSlider != null)
+        {
+            choiceTimerSlider.maxValue = timeLimit;
+            choiceTimerSlider.value = timeLimit;
+            choiceTimerSlider.gameObject.SetActive(true);
+        }
+    }
+
+    void ResetTimer()
+    {
+        timerRunning = false;
+        timeRemaining = 0;
+        choiceMade = false;
+
+        if (choiceTimerSlider != null)
+            choiceTimerSlider.gameObject.SetActive(false);
+    }
+
+    void AutoChooseFallback()
+    {
+        if (_StoryScript.currentChoices.Count > 0)
+        {
+            MakeChoice(_StoryScript.currentChoices.Count - 1);
+        }
+    }
+
+    void HideAllChoices()
+    {
+        foreach (Button btn in choiceButtons)
+        {
+            btn.gameObject.SetActive(false);
+            btn.onClick.RemoveAllListeners();
+        }
+
+        if (choiceTimerSlider != null)
+            choiceTimerSlider.gameObject.SetActive(false);
     }
 
     public void ChangeName(string name)
@@ -99,26 +215,19 @@ public class ScriptReader : MonoBehaviour
 
         characterSprites[charName] = characterIconSprite;
 
-        List<string> activeCharacters = new List<string>(characterSprites.Keys);
-
-        if (activeCharacters.Count == 1)
+        var active = new List<string>(characterSprites.Keys);
+        if (active.Count == 1)
         {
+            characterIconLeft.sprite = characterIconSprite;
             characterIconLeft.gameObject.SetActive(true);
             characterIconRight.gameObject.SetActive(false);
-
-            characterIconLeft.sprite = characterIconSprite;
-            characterIconLeft.rectTransform.anchoredPosition = Vector2.zero;
         }
-        else if (activeCharacters.Count == 2)
+        else if (active.Count == 2)
         {
-            string first = activeCharacters[0];
-            string second = activeCharacters[1];
-
+            characterIconLeft.sprite = characterSprites[active[0]];
+            characterIconRight.sprite = characterSprites[active[1]];
             characterIconLeft.gameObject.SetActive(true);
             characterIconRight.gameObject.SetActive(true);
-
-            characterIconLeft.sprite = characterSprites[first];
-            characterIconRight.sprite = characterSprites[second];
         }
     }
 
@@ -127,29 +236,23 @@ public class ScriptReader : MonoBehaviour
         if (!characterSprites.ContainsKey(charName)) return;
 
         characterSprites.Remove(charName);
+        var keys = new List<string>(characterSprites.Keys);
 
-        if (characterSprites.Count == 0)
+        if (keys.Count == 0)
         {
             characterIconLeft.gameObject.SetActive(false);
             characterIconRight.gameObject.SetActive(false);
         }
-        else if (characterSprites.Count == 1)
+        else if (keys.Count == 1)
         {
-            string remaining = new List<string>(characterSprites.Keys)[0];
-
-            characterIconLeft.sprite = characterSprites[remaining];
-            characterIconLeft.rectTransform.anchoredPosition = Vector2.zero;
+            characterIconLeft.sprite = characterSprites[keys[0]];
             characterIconLeft.gameObject.SetActive(true);
             characterIconRight.gameObject.SetActive(false);
         }
-        else if (characterSprites.Count == 2)
+        else if (keys.Count == 2)
         {
-            string first = new List<string>(characterSprites.Keys)[0];
-            string second = new List<string>(characterSprites.Keys)[1];
-
-            characterIconLeft.sprite = characterSprites[first];
-            characterIconRight.sprite = characterSprites[second];
-
+            characterIconLeft.sprite = characterSprites[keys[0]];
+            characterIconRight.sprite = characterSprites[keys[1]];
             characterIconLeft.gameObject.SetActive(true);
             characterIconRight.gameObject.SetActive(true);
         }
@@ -167,6 +270,7 @@ public class ScriptReader : MonoBehaviour
 
                 if (characterIconLeft.sprite.name.Contains(key))
                     characterIconLeft.sprite = newSprite;
+
                 if (characterIconRight.sprite.name.Contains(key))
                     characterIconRight.sprite = newSprite;
             }
