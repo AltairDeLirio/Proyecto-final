@@ -2956,6 +2956,7 @@ namespace Ink.Runtime
         bool _asyncSaving;
 
         Profiler _profiler;
-	}
+        public string currentPathString;
+    }
 }
 
