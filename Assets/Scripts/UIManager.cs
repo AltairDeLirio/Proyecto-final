@@ -17,6 +17,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateLives(int lives)
     {
-        livesText.text = "Vidas: " + lives;
+        livesText.text = "Vidas:" + lives;
     }
 }

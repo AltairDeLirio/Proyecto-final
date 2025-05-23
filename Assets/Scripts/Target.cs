@@ -8,8 +8,7 @@ public class Target : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, lifetime);
-        Invoke(nameof(AttackPlayer), lifetime);
+        Invoke(nameof(AttackPlayer), lifetime); // SOLO este, el Destroy va adentro
     }
 
     void Update()
@@ -31,5 +30,8 @@ public class Target : MonoBehaviour
             GameManager.Instance.LoseLife();
         }
         Destroy(gameObject);
+
+        Debug.Log("Fallaste el objetivo. Vida perdida.");
+
     }
 }

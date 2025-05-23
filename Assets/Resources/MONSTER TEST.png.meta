@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 502d88c97fee91e4f978c572f9f1e345
+guid: 6da92d8afb9323341b10cb2033c05692
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4534634967793127557
-    second: v_0
+      213: 298408000062507512
+    second: MONSTER TEST_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: v_0
+      name: MONSTER TEST_0
       rect:
         serializedVersion: 2
-        x: 675
+        x: 0
         y: 0
-        width: 1619
-        height: 2471
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b7f20a6b58db111c0800000000000000
-      internalID: -4534634967793127557
+      spriteID: 8f94cd9be78242400800000000000000
+      internalID: 298408000062507512
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      v_0: -4534634967793127557
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
