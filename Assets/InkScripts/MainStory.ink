@@ -3,6 +3,9 @@ EXTERNAL CharacterIcon(charName)
 EXTERNAL Expression(expressionName)
 EXTERNAL HideCharacter(charName)
 
+-> start
+
+=== start ===
 ~ Name("___")
 Nuestro mundo. El mundo original. El primero de todos. Justo antes de que llegaran ellos… Al fin ha resurgido de sus cenizas. Después de casi 50 mil años, por fin podemos regresar a nuestro hogar.
 ~ CharacterIcon("v")
@@ -23,7 +26,9 @@ Sin embargo, justo cuando empezaba su camino a casa, escuchó unos fuertes aulli
 -> END
 
 === historia_continua ===
+~ Name("___")
 Puso rumbo al origen de aquellos sonidos, puesto que ya conocía de sobra de qué se trataba.
+~ CharacterIcon("v")
 En cuanto llegó a la zona, lo confirmó.
 Se trataba de una pequeña manada de Dant’irs, unas criaturas muy temidas en su mundo, los depredadores naturales de los Hek.
 V era un cazador experimentado. Evitaba meterse en problemas siempre que podía, pero había algo raro en esos Dant’ir.
@@ -31,6 +36,8 @@ Normalmente nunca iban en manada, solamente cuando se disponían a cazar a algú
 
 #change_scene: Minigame_shoot
 
+~ Name("___")
+~ CharacterIcon("v")
 Sin pensárselo dos veces, V empezó a disparar con su arco a aquellas criaturas, derribándolas una por una.
 Por suerte, eran pocas y algo débiles, facilitando la tarea. En cuanto todas cayeron, V se acercó a lo que parecía un pequeño niño. 
 
@@ -65,7 +72,7 @@ Sus manos tiemblan. Tiene el arco cargado, la cuerda tensa, la punta de la flech
 === choice_disparar ===
 #timed
 * [Dispara al niño.] -> Bad_End_2
--> no_dispara
+* [No dispara] -> no_dispara
 
 === Bad_End_2 ===
 texto //falta añadir el final
@@ -96,4 +103,14 @@ Pero no hubo respuesta por parte del niño, tan solo unos sonidos vacíos que V 
 El niño cayó de espaldas tras tropezar con una rama y soltó un pequeño grito de dolor. Le brotaron lágrimas de los ojos.
 ~ Expression("sad")
 V se acercó torpemente hacía él, no sabía si sería buena idea tocarlo, pero por todos los demonios, solo era un niño, ¿no?
+Así que se arrodilló a su lado y le tendió el brazo. El niño, desconfiado, lo aceptó y se puso de pie.
+Efectivamente, apenas le llegaba a las rodillas a V. La pequeña criatura se abrazó fuertemente a la pierna de V y continuó sollozando.
+V se planteó apartarlo de su pierna, pero enseguida entendió que tan solo estaba asustado y hambriento.
+Aún tenía dudas, pero V agarró al niño de los hombros y lo elevó hasta colocarlo sobre los suyos.
+~ Name("V")
+<i> Mejor decido en casa...</i>
+<i> Una vez este limpio y con la tripa llena, seguro que veo razón.</i>
+<i>Tiene que ser un niño Hek, y sus padres estaran buscandolo.</i>
+~ Name("___")
+Lo que V no sabía, era que aquella decisión le cambiaría la vida por completo.
 -> END

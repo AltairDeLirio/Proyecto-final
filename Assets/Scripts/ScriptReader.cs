@@ -29,6 +29,13 @@ public class ScriptReader : MonoBehaviour
 
     void Start()
     {
+        // If returning from main menu with reset flag, clear story state
+        if (PlayerPrefs.GetInt("FromMainMenu", 0) == 1)
+        {
+            PlayerPrefs.DeleteKey("Game");
+            PlayerPrefs.SetInt("FromMainMenu", 0);
+        }
+
         LoadStory();
     }
 
@@ -39,7 +46,6 @@ public class ScriptReader : MonoBehaviour
         if (timerRunning && !choiceMade)
         {
             timeRemaining -= Time.deltaTime;
-
             if (choiceTimerSlider != null)
                 choiceTimerSlider.value = Mathf.Max(0, timeRemaining);
 
@@ -61,10 +67,12 @@ public class ScriptReader : MonoBehaviour
     {
         _StoryScript = new Story(_InkJsonFile.text);
 
+        // Restore saved story state if available
         if (PlayerPrefs.HasKey("Game"))
         {
             string savedState = PlayerPrefs.GetString("Game");
             _StoryScript.state.LoadJson(savedState);
+            PlayerPrefs.DeleteKey("Game"); // Optional cleanup
         }
 
         _StoryScript.BindExternalFunction("Name", (string charName) => ChangeName(charName));
@@ -77,10 +85,16 @@ public class ScriptReader : MonoBehaviour
 
     public void DisplayNextLine()
     {
+        if (_StoryScript == null)
+        {
+            Debug.LogWarning("No story script loaded.");
+            return;
+        }
+
         if (_StoryScript.canContinue)
         {
             string text = _StoryScript.Continue()?.Trim();
-            dialogueBox.text = text;
+            dialogueBox.text = string.IsNullOrEmpty(text) ? "[...] (Empty line)" : text;
 
             List<string> tags = _StoryScript.currentTags;
             foreach (string tag in tags)
@@ -88,8 +102,8 @@ public class ScriptReader : MonoBehaviour
                 if (tag.StartsWith("change_scene:"))
                 {
                     string targetScene = tag.Split(':')[1].Trim();
+                    // Save current Ink state before switching scenes
                     PlayerPrefs.SetString("Game", _StoryScript.state.ToJson());
-                    PlayerPrefs.SetString("InkCurrentKnot", _StoryScript.currentPathString);
                     PlayerPrefs.Save();
                     SceneManager.LoadScene(targetScene);
                     return;
@@ -105,9 +119,13 @@ public class ScriptReader : MonoBehaviour
                 HideAllChoices();
             }
         }
+        else if (_StoryScript.currentChoices.Count > 0)
+        {
+            ShowChoices();
+        }
         else
         {
-            dialogueBox.text = "The end";
+            dialogueBox.text = "The end.";
             HideAllChoices();
         }
     }
@@ -275,5 +293,11 @@ public class ScriptReader : MonoBehaviour
                     characterIconRight.sprite = newSprite;
             }
         }
+    }
+
+    public void ResetStoryProgress()
+    {
+        PlayerPrefs.DeleteKey("Game");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
