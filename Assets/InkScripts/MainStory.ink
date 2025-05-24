@@ -11,6 +11,18 @@ Era increíblemente hábil haciendo uso del arco, casi nunca fallaba una flecha.
 Terminando su jornada, V se dispusó a ir a lo que llamaba su hogar.
 Una simple cabaña en un lado del bosque.
 Sin embargo, justo cuando empezaba su camino a casa, escuchó unos fuertes aullidos al oeste. /* meter sonido aqui */
+~ Name("V")
+<i>Esos aullidos... no son animales normales. Alguien podría estar en peligro.</i>
+-> aullidos
+
+=== aullidos ===
+* [Ir a investigar los aullidos] -> historia_continua
+* [Ignorar los sonidos y regresar a casa] -> Bad_End_1
+
+=== Bad_End_1 ===
+-> END
+
+=== historia_continua ===
 Puso rumbo al origen de aquellos sonidos, puesto que ya conocía de sobra de qué se trataba.
 En cuanto llegó a la zona, lo confirmó.
 Se trataba de una pequeña manada de Dant’irs, unas criaturas muy temidas en su mundo, los depredadores naturales de los Hek.
@@ -44,26 +56,44 @@ En cuanto a V se le pasó por la cabeza aquella historia, dudó.
 ~ Name("V")
 <i>Es imposible que sea un humano, ¿verdad?</i>
 ~ Name("___")
-En ese momento, el niño abrió los ojos. Unos ojos marrones que miraban fijamente a los de V.
-Sin dudarlo, el Hek sacó su arco y apuntó a la frente del niño. V estaba aterrado, no sabía lo que tenía delante. O al menos, no quería reconocerlo. 
+ El niño abre los ojos. Marrones. Sin brillo, pero con una humanidad desconocida.
+V duda. 
+Sus manos tiemblan. Tiene el arco cargado, la cuerda tensa, la punta de la flecha apuntando a su frente.
 ~ HideCharacter("v")
 -> choice_disparar
 
 === choice_disparar ===
 #timed
-* [Dispara al niño.] -> Bad_End_1
+* [Dispara al niño.] -> Bad_End_2
 -> no_dispara
 
-=== Bad_End_1 ===
+=== Bad_End_2 ===
 texto //falta añadir el final
 -> END
 
 === no_dispara ===
 El niño se puso de pie.
--> historia_continua
+-> historia_continua2
 
-=== historia_continua ===
+=== historia_continua2 ===
 ~ CharacterIcon("kid")
 ~ CharacterIcon("v")
 No podía medir más de 110 cm de altura, casi ni le llegaba a la altura de las rodillas a V.
+El Hek se puso nervioso, el pulso le temblaba y le costaba apuntar. V pudo ver en la piel del niño numerosos arañazos que sangraban.
+Se fijó en su cara.
+Estaba sucia y delgada. Tenía los ojos rojizos, como si hubiera estado llorando.
+~ Name("V")
+<i>¿Qué demonios hace un niño aquí?</i>
+~ Name("___")
+El niño dio unos pequeños pasos hacía atrás. Las manos juntas a la altura del pecho.
+Estaba claramente asustado y V pudo verlo.
+Aún tenía dudas, pero bajó su arco y se empezó a acercar poco a poco a aquella criatura.
+~ Name("V")
+¿Quién eres?
+Qué haces aquí tú solo?
+~ Name("___")
+Pero no hubo respuesta por parte del niño, tan solo unos sonidos vacíos que V no lograba comprender.
+El niño cayó de espaldas tras tropezar con una rama y soltó un pequeño grito de dolor. Le brotaron lágrimas de los ojos.
+~ Expression("sad")
+V se acercó torpemente hacía él, no sabía si sería buena idea tocarlo, pero por todos los demonios, solo era un niño, ¿no?
 -> END
