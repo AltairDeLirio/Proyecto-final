@@ -16,7 +16,7 @@ public class TargetSpawner : MonoBehaviour
 
     void SpawnTarget()
     {
-        if (!GameManager.Instance.CanSpawnTarget())
+        if (spawnedTargets >= GameManager.Instance.maxTargets)
         {
             CancelInvoke(nameof(SpawnTarget));
             return;

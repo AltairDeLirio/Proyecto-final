@@ -64,9 +64,14 @@ public class GameManager : MonoBehaviour
 
     void MinigameComplete()
     {
-        Time.timeScale = 0f;
-        winPanel.SetActive(true);
+        Time.timeScale = 1f;
+        int previousIndex = SceneManager.GetActiveScene().buildIndex - 1;
+        if (previousIndex >= 0)
+        {
+            SceneManager.LoadScene(previousIndex);
+        }
     }
+
 
     public void RestartGame()
     {
