@@ -113,4 +113,52 @@ Aún tenía dudas, pero V agarró al niño de los hombros y lo elevó hasta colo
 <i>Tiene que ser un niño Hek, y sus padres estaran buscandolo.</i>
 ~ Name("___")
 Lo que V no sabía, era que aquella decisión le cambiaría la vida por completo.
+~ HideCharacter("kid")
+~ CharacterIcon("kid")
+Pusieron rumbo a casa. V seguía preocupado, no estaba seguro de si eso era buena idea.
+// bg: cabin
+La casa de V era muy pequeña. Tenía una sola habitación, dondé se encontraba su cama rellena de hojas y pasto y una pequeña sábana vieja.
+ambién había una silla y una mesa de madera redonda y desgastada y lo que parecía una chimenea improvisada con un caldero y una parrilla para asar algo. 
+No contaba con baño, pues este se encontraba fuera. V hacía sus necesidades en el propio bosque y se bañaba en una bañera de madera que calentaba el agua como si fuese una olla. Agua que tenía que traer a mano, por lo que no la cambiaba muy a menudo. 
+Ambos entraron en casa y el niño parecía desconcertado.
+V intentó preguntarle el nombre a la criatura varias veces, pero este no parecía entenderle, por lo que decidió llamarle Somi, igual que se llamaba su madre.
+V echó un poco de agua en el caldero y encendió un fuego.
+Sacó una de las aves que había cazado antes y la colocó sobre la mesa. Empezó a desplumarla y una vez hecho, arrancó su cabeza con un cuchillo y abrió su vientre para sacarle las tripas.
+Somi miró curioso la escena, pero no pareció sorprenderle.
+Cuando V tuvo al ave totalmente lista y el agua ya estaba hirviendo, la echó en el caldero sin preocuparse demasiado por sazonarla o por el tiempo de cocinado.
+En vez de eso, salió fuera y encendió el fuego de su bañera para calentar el agua. 
+Entró de nuevo a casa y le hizo un gesto a Somi para que se acercara.
+Este lo siguió y V se agachó. V le quitó la capa con algo de duda y ya pudo ver con claridad su piel.
+No había nada más que arañazos en ella.
+Ni escamas, ni nada que fuese distintivo de los Hek. Nada. V continuó quitándole la ropa a Somi.
+Para los Hek, verse desnudos no significaba nada, era algo totalmente normal, aunque la mayoría prefería llevar algo de ropa, sobre todo por moda y estatus.
+El cuerpo de Somi no dejaba de sorprender a V. No tenía nada que ver a como eran los cuerpos de otros niños Hek.
+Empezó a preocuparse de nuevo. V no quería aceptarlo, pero él sabía que aquel niño no podía ser un Hek.
+Tampoco estaba seguro de que fuera humano, ya que para ellos solo eran cuentos de hadas. 
+// bg: forest
+V se llevó a Somi fuera.
+Comprobó que el agua de la bañera estuviera caliente y agarró a Somi de los hombros para meterlo dentro.
+Cogió un trapo, algo sucio, y empezó a limpiar el cuerpo de Somi. Le lavó la sangre, la suciedad y el pelo.
+Somi apenas puso resistencia, al contrario.
+Parecía feliz y estaba relajado en esa situación.
+V terminó de limpiarlo. Lo sacó del agua y lo dejó de pie en el suelo. 
+Entró de nuevo a casa y volvió a salir con una tela grande, que utilizó a modo de toalla para secarlo.
+// bg: cabin
+Ambos volvieron a entrar a casa.
+V se fijó en que Somi parecía tener frío, ya que estaba temblando. Le extrañó. En aquella época no hacía frío.
+De hecho, muchos niños Hek iban sin ropa en esas fechas y nunca se les veía tiritando.
+V abrió un cajón y sacó de él una camisa marrón algo gastada y se la puso a Somi encima.
+Le quedaba enorme, casi parecía un vestido, pero era lo mejor que podía darle en ese momento, ya que la ropa que llevaba Somi estaba destrozada por los arañazos de los Dant’ir. 
+~ HideCharacter("kid")
+~ HideCharacter("v")
+// change scene: food choice
+~ CharacterIcon("v")
+~ Expression("happyV")
+V sonrió, pero inmediatamente apartó esa expresión de su cara.
+~ HideCharacter("v")
+~ CharacterIcon("v")
+~ Name("V")
+¿Qué hago sonriendo?
+~ Name("___")
+Sus dudas no se disipaban, pero tampoco podía dejar a un niño solo en el bosque a esas horas.
 -> END
