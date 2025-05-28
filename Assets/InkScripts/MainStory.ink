@@ -2,10 +2,12 @@ EXTERNAL Name(charName)
 EXTERNAL CharacterIcon(charName)
 EXTERNAL Expression(expressionName)
 EXTERNAL HideCharacter(charName)
+EXTERNAL Background(background)
 
 -> start
 
 === start ===
+~ Background("Forest_Background")
 ~ Name("___")
 Nuestro mundo. El mundo original. El primero de todos. Justo antes de que llegaran ellos… Al fin ha resurgido de sus cenizas. Después de casi 50 mil años, por fin podemos regresar a nuestro hogar.
 ~ CharacterIcon("v")

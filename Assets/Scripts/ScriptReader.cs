@@ -16,6 +16,7 @@ public class ScriptReader : MonoBehaviour
 
     public Image characterIconLeft;
     public Image characterIconRight;
+    public Image background;
 
     public Button[] choiceButtons;
     public float timeLimit = 5f;
@@ -29,7 +30,6 @@ public class ScriptReader : MonoBehaviour
 
     void Start()
     {
-        // If returning from main menu with reset flag, clear story state
         if (PlayerPrefs.GetInt("FromMainMenu", 0) == 1)
         {
             PlayerPrefs.DeleteKey("Game");
@@ -67,18 +67,18 @@ public class ScriptReader : MonoBehaviour
     {
         _StoryScript = new Story(_InkJsonFile.text);
 
-        // Restore saved story state if available
         if (PlayerPrefs.HasKey("Game"))
         {
             string savedState = PlayerPrefs.GetString("Game");
             _StoryScript.state.LoadJson(savedState);
-            PlayerPrefs.DeleteKey("Game"); // Optional cleanup
+            PlayerPrefs.DeleteKey("Game");
         }
 
         _StoryScript.BindExternalFunction("Name", (string charName) => ChangeName(charName));
         _StoryScript.BindExternalFunction("CharacterIcon", (string charName) => ShowCharacter(charName));
         _StoryScript.BindExternalFunction("HideCharacter", (string charName) => HideCharacter(charName));
         _StoryScript.BindExternalFunction("Expression", (string expressionName) => ChangeCharacterExpression(expressionName));
+        _StoryScript.BindExternalFunction("Background", (string bg) => ChangeBackground(bg));
 
         DisplayNextLine();
     }
@@ -102,7 +102,6 @@ public class ScriptReader : MonoBehaviour
                 if (tag.StartsWith("change_scene:"))
                 {
                     string targetScene = tag.Split(':')[1].Trim();
-                    // Save current Ink state before switching scenes
                     PlayerPrefs.SetString("Game", _StoryScript.state.ToJson());
                     PlayerPrefs.Save();
                     SceneManager.LoadScene(targetScene);
@@ -138,17 +137,23 @@ public class ScriptReader : MonoBehaviour
 
         for (int i = 0; i < choiceButtons.Length; i++)
         {
+            Button btn = choiceButtons[i];
             if (i < _StoryScript.currentChoices.Count)
             {
                 Choice choice = _StoryScript.currentChoices[i];
-                Button btn = choiceButtons[i];
 
                 btn.gameObject.SetActive(true);
+                btn.interactable = true;
                 btn.GetComponentInChildren<TextMeshProUGUI>().text = choice.text;
 
                 int index = i;
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(() => MakeChoice(index));
+            }
+            else
+            {
+                btn.gameObject.SetActive(false);
+                btn.onClick.RemoveAllListeners();
             }
         }
 
@@ -293,6 +298,18 @@ public class ScriptReader : MonoBehaviour
                     characterIconRight.sprite = newSprite;
             }
         }
+    }
+
+    public void ChangeBackground(string bg)
+    {
+        Sprite backgroundSprite = Resources.Load<Sprite>("UI/" + bg);
+        if (backgroundSprite == null)
+        {
+            Debug.LogWarning("Background not found: " + bg);
+            return;
+        }
+
+        background.sprite = backgroundSprite;
     }
 
     public void ResetStoryProgress()
