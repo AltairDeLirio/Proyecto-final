@@ -1213,10 +1213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1990aa9f2ff3a74448af8acbe314da3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 8582377addabab64da491da2935d5b8b, type: 2}
   gammaPanel: {fileID: 1944137937}
   musicSlider: {fileID: 1748499342}
-  sfxSlider: {fileID: 0}
+  sfxSlider: {fileID: 889011829}
   gammaSlider: {fileID: 875017412}
   fullscreenToggle: {fileID: 662633844}
 --- !u!114 &662633844 stripped
@@ -1233,6 +1233,17 @@ MonoBehaviour:
 --- !u!114 &875017412 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6016116351153516332, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
+  m_PrefabInstance: {fileID: 642871961}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &889011829 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9113295681179881571, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
   m_PrefabInstance: {fileID: 642871961}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
