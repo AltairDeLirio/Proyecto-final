@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
         currentLives--;
         UIManager.Instance.UpdateLives(currentLives);
 
+        targetsRemaining--;
+
         if (currentLives <= 0)
         {
             GameOver();
@@ -75,8 +77,14 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        
+        currentLives = maxLives;
+        targetsRemaining = maxTargets;
+
+        UIManager.Instance.UpdateLives(currentLives);
+        gameOverPanel.SetActive(false);
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void QuitGame()
