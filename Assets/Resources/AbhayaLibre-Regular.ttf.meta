@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 22c47aa6c3088864289aeee419597dde
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Abhaya Libre
+  fallbackFontReferences: []
+  customCharacters: "\xE1 \xE9\xED\xF3\xFA\xC1\xC9\xDA\xCD\xD3\xD1\xF1"
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
