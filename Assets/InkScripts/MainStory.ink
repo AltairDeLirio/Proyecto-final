@@ -25,6 +25,8 @@ Sin embargo, justo cuando empezaba su camino a casa, escuchó unos fuertes aulli
 * [Ignorar los sonidos y regresar a casa] -> Bad_End_1
 
 === Bad_End_1 ===
+texto
+#change_scene: Game Over
 -> END
 
 === historia_continua ===
@@ -78,6 +80,7 @@ Sus manos tiemblan. Tiene el arco cargado, la cuerda tensa, la punta de la flech
 
 === Bad_End_2 ===
 texto //falta añadir el final
+#change_scene: Game Over
 -> END
 
 === no_dispara ===
@@ -118,7 +121,7 @@ Lo que V no sabía, era que aquella decisión le cambiaría la vida por completo
 ~ HideCharacter("kid")
 ~ CharacterIcon("kid")
 Pusieron rumbo a casa. V seguía preocupado, no estaba seguro de si eso era buena idea.
-// bg: cabin
+~ Background("House2_Background")
 La casa de V era muy pequeña. Tenía una sola habitación, dondé se encontraba su cama rellena de hojas y pasto y una pequeña sábana vieja.
 ambién había una silla y una mesa de madera redonda y desgastada y lo que parecía una chimenea improvisada con un caldero y una parrilla para asar algo. 
 No contaba con baño, pues este se encontraba fuera. V hacía sus necesidades en el propio bosque y se bañaba en una bañera de madera que calentaba el agua como si fuese una olla. Agua que tenía que traer a mano, por lo que no la cambiaba muy a menudo. 
@@ -137,7 +140,7 @@ Para los Hek, verse desnudos no significaba nada, era algo totalmente normal, au
 El cuerpo de Somi no dejaba de sorprender a V. No tenía nada que ver a como eran los cuerpos de otros niños Hek.
 Empezó a preocuparse de nuevo. V no quería aceptarlo, pero él sabía que aquel niño no podía ser un Hek.
 Tampoco estaba seguro de que fuera humano, ya que para ellos solo eran cuentos de hadas. 
-// bg: forest
+~ Background("Forest_Background")
 V se llevó a Somi fuera.
 Comprobó que el agua de la bañera estuviera caliente y agarró a Somi de los hombros para meterlo dentro.
 Cogió un trapo, algo sucio, y empezó a limpiar el cuerpo de Somi. Le lavó la sangre, la suciedad y el pelo.
@@ -145,7 +148,7 @@ Somi apenas puso resistencia, al contrario.
 Parecía feliz y estaba relajado en esa situación.
 V terminó de limpiarlo. Lo sacó del agua y lo dejó de pie en el suelo. 
 Entró de nuevo a casa y volvió a salir con una tela grande, que utilizó a modo de toalla para secarlo.
-// bg: cabin
+~ Background("House2_Background")
 Ambos volvieron a entrar a casa.
 V se fijó en que Somi parecía tener frío, ya que estaba temblando. Le extrañó. En aquella época no hacía frío.
 De hecho, muchos niños Hek iban sin ropa en esas fechas y nunca se les veía tiritando.
@@ -163,4 +166,231 @@ V sonrió, pero inmediatamente apartó esa expresión de su cara.
 ¿Qué hago sonriendo?
 ~ Name("___")
 Sus dudas no se disipaban, pero tampoco podía dejar a un niño solo en el bosque a esas horas.
+Como al día siguiente V tenía que ir al pueblo a hacer unas tareas, aprovecharía para llevar a Somi allí y ver si podía conseguir algo más de información.
+Tal vez alguien habría puesto un encargo para encontrar al niño y así V podría sacarse unas monedas. 
+~ CharacterIcon("kid")
+Somi terminó de comer e inmediatamente soltó un bostezo.
+V lo vio y acostó a Somi en la cama. Se quedó dormido casi de inmediato.
+V recogió todo y apagó los fuegos. La casa se quedó iluminada gracias a unas pequeñas velas que había en la pared. 
+~ HideCharacter("kid")
+V volvió a abrir el cajón de la tela y también otro que estaba al lado.
+De ese sacó un estuche y lo dejó en la mesa.
+Se sentó, estiró la tela y abrió el estuche. Era un estuche de costura. Tenía de todo. Agujas, hilo, tijeras… 
+Comenzó a dibujar sobre la tela. Una vez tuvo el dibujo hecho, sacó las tijeras y empezó a cortar siguiendo las líneas con mucho cuidado.
+Con los trozos cortados, hiló la aguja y comenzó a coserlos.
+Empezó a tomar forma: era una capa nueva para Somi, con capucha y todo.
+También le hizo una camisa y unos pantalones, además de unos zapatos muy simples.
+No parecían los más cómodos del mundo, pero al menos no se haría daño en los pies al caminar. 
+Estuvo toda la noche cosiendo y apenas tuvo tiempo de dormir.
+Parecía que a V le encantaba coser y además se le daba bastante bien.
+~ CharacterIcon("kid")
+Al amanecer, Somi levantó a V de la cama. Parecía que volvía a tener hambre.
+V se incorporó. Buscó en un lado del caldero y sacó lo que parecía una fruta.
+Se la dio a Somi e hizo el gesto de morderla.
+Somi pareció comprenderle y eso hizo. Puso cara rara al probarla, pero se la terminó comiendo entera. 
+Una vez desayunados, V le enseñó a Somi la ropa que le había preparado.
+~ Expression ("happy")
+Somi se la puso. Le quedaba perfecta. Somi sonrió y dio un par de vueltas sobre sí mismo, contento.
+~ Expression ("happyV")
+A V también se le escapó una sonrisilla.
+Somi lo miraba desde una esquina de la cabaña.
+Había comido, estaba limpio, y ahora vestía ropa improvisada pero digna.
+No hablaba. No entendía. Pero lo seguía con los ojos.
+~ HideCharacter("v")
+~ CharacterIcon ("v")
+V suspiró. 
+~ Name("V")
+<i>¿Y si no es un niño? ¿Y si todo esto es un error?</i>
+<i>Tal vez debería dejarlo aquí... seguir investigando el bosque. No ir al pueblo...</i>
+<i>¿Y si me meto en algo peor por ayudarlo?</i>
+~ Name("___")
+-> choice_dejarlo
+
+=== choice_dejarlo ===
+* Llevar al niño contigo al pueblo. -> historia_continua3
+* Dejar al niño solo en la cabaña mientras vas a investigar. -> Bad_End_3
+
+=== Bad_End_3 ===
+text
+#change_scene: Game Over
+-> END
+
+=== historia_continua3 ===
+~ HideCharacter("v")
+~ HideCharacter("kid")
+~ CharacterIcon("kid")
+~ CharacterIcon("v")
+~ Name("V")
+<i> Es mejor llevarlo conmigo...</i>
+~ Name("___")
+Con ambos listos, V agarró de la mano a Somi y ambos salieron de casa, rumbo al pueblo, conocido como Frisbar. 
+~ Background("Forest_Background")
+El camino fue sencillo, no hubo contratiempos.
+Al ser temprano, apenas había personas, y nadie pareció fijarse en Somi, lo que tranquilizó a V.
+Desde la pequeña cabaña hasta la entrada del pueblo habría alrededor de 15 minutos caminando.
+Tanto V como Somi iban encapuchados, para no ser reconocidos. 
+// bg: town
+El pueblo de Frisbar era distinto a cualquier otro.
+Sus construcciones estaban entrelazadas con la naturaleza: grandes árboles de más de cincuenta metros de alto formaban el esqueleto del asentamiento, 
+y las casas colgaban con gruesas cuerdas y tablones de madera suspendidos entre las ramas, como un enjambre de nidos entre el follaje.
+Algunos de los caminos estaban formados por puentes colgantes, y otros por escaleras talladas directamente en los troncos.
+Frisbar era una joya escondida en lo alto del bosque, y aunque no era una ciudad rica, sí desprendía una sensación de armonía que pocos pueblos lograban.
+V, encapuchado, caminaba con Somi de la mano por las pasarelas elevadas.
+Se notaba que hacía tiempo que no pisaba un pueblo.
+Saludaba con una inclinación de cabeza a los pocos que lo reconocían, pero mantenía la capucha baja, intentando no llamar la atención.
+Somi lo seguía en silencio, observando con ojos muy abiertos las estructuras, 
+los animales exóticos en las jaulas colgantes, y a los Hek que caminaban con alas extendidas o cuernos adornados.
+El destino era una taberna suspendida entre dos árboles especialmente anchos, unida por una pasarela firme y protegida con redes laterales.
+En la entrada, un cartel de madera decía “La Rama Dorada”.
+~ Background("Tabern_Background")
+V empujó la puerta con suavidad y entró.
+A esa hora, solo unos pocos clientes madrugadores bebían o leían. 
+Tras la barra, un camarero de piel azulada, sin alas pero con unos cuernos finos que apuntaban hacia atrás, limpiaba un vaso.
+Al ver a V, sonrió ampliamente.
+~ Name("???")
+—¡V, por todos los cielos! Pensé que ya te habrías muerto de hambre en ese bosque.
+~ Name("V")
+—Casi, Rekk 
+~ Name("___")
+La falta de energía en V era obvia.
+~ Name("V")
+Necesito información.
+~ Name("___")
+Rekk alzó una ceja, y al notar al niño que se escondía detrás V, su sonrisa se desvaneció un poco.
+~ Name("Rekk")
+—¿Y el crío?
+~ Name("V")
+—Complicado. ¿Sabes si alguien ha dejado alguna recompensa por un niño perdido?
+~ Name("___")
+El camarero dejó el vaso y asintió lentamente.
+~ Name("Rekk")
+—Justo esta mañana. Un tipo extraño dejó un cartel.
+—No parecía del pueblo… Tenía una presencia... incómoda.
+—No paraba de decir que había perdido algo <i>preciado</i>
+—Si lo buscas, lo encontrarás en uno de los callejones bajos. Te puedo dar las indicaciones.
+~ Name("___")
+V asintió con seriedad.
+Rekk dibujó en un trozo de papel un pequeño croquis de la zona baja del pueblo, una zona menos transitada que colgaba cerca de las raíces de los árboles, donde se ubicaban los talleres de curtidores y los almacenes.
+~ Name("V")
+—Gracias, Rekk. Si no vuelvo… ya sabes.
+~ Name("Rekk")
+—¿Cuándo has hecho algo fácil, V?
+~ Name("___")
+~ Background("Forest_Background") // bg: town
+Las indicaciones de Rekk guiaron a V hacia los niveles más bajos de Frisbar, donde la vida del pueblo se volvía más sombría.
+A medida que descendían por escaleras de cuerda y plataformas tambaleantes, el bullicio de la zona comercial quedaba atrás, 
+ahogado por el crujido de la madera envejecida y el sonido lejano de herramientas golpeando cuero y metal.
+El aire era más denso allí abajo, cargado de humedad y el penetrante olor a savia fermentada.
+Musgo y líquenes crecían entre las grietas de los tablones, y los faroles de fuego verde apenas lograban disipar las sombras.
+Somi se aferraba a la capa de V con fuerza, sus pasos eran suaves, pero sus dedos temblaban ligeramente.
+La zona baja era conocida como “las raíces”, no sólo por su proximidad con la base de los árboles, sino porque allí se asentaban los aspectos más sombríos del pueblo: contrabandistas, tramperos, comerciantes de bestias raras y cazadores de recompensas sin escrúpulos.
+// bg: callejones
+Un callejón sin nombre, estrecho y mal iluminado, aguardaba al final del recorrido.
+V se detuvo en la entrada.
+Instintivamente, colocó su brazo frente a Somi para protegerlo. 
+Allí, junto a unas cajas de madera y toneles mal apilados, un personaje rechoncho y grotesco destacaba en medio de la penumbra.
+El individuo estaba iluminado solo por la luz mortecina de un farol.
+Su silueta parecía sacada de una pesadilla cómica: un cuerpo obeso cubierto con ropas elegantes aunque mal ajustadas, un chaleco de terciopelo púrpura y una camisa blanca manchada de grasa.
+Su piel era rosada, brillante, y su rostro, redondo como una manzana pasada, terminaba en un hocico por el que resoplaba aire de forma pesada.
+Un monóculo plateado descansaba sobre su ojo derecho, y cada vez que hablaba, su diente de oro destellaba con malicia.
+~ Name("???")
+—Ah… tú debes ser el buen cazador del que me hablaron en la taberna.
+~ Name("Pigstep")
+—Soy Pigstep.
+~ Name("___")
+Pigstep ronroneó, arrastrando las palabras con una voz chillona y lenta, como si disfrutara cada sílaba.
+V no respondió de inmediato.
+Miró a los dos guardaespaldas que flanqueaban a Pigstep: eran Hek de aspecto rudo, armados con cuchillos de hueso y látigos enrollados en sus cinturones.
+Sus ojos estaban clavados en Somi con una mezcla de interés profesional y desdén.
+~ Expression("scared")
+~ Name("V")
+—Recibí el mensaje. Dijiste que buscabas a alguien.
+~ Name("Pigstep")
+—Y lo hiciste rápido, eso te honra. Vaya, vaya… qué criatura más encantadora traes contigo.
+—Aunque... no diría que es “alguien”. Es más bien… un tesoro. Una anomalía. Algo <i>irrepetible.</i>
+~ Name("___")
+Somi se pegó a la pierna de V, su mano temblaba, pero su rostro seguía inexpresivo. V sintió cómo un escalofrío le recorría la espalda. Se obligó a mantener la calma.
+~ Name("V")
+—¿Qué sabes de él?
+~ Name("Pigstep")
+—Lo suficiente
+—Lo encontré hace unos días, fuera de donde debería estar. Escapó.
+—No es muy listo, pero tiene algo… magnético. Su especie está prácticamente extinta, ¿sabes? 
+—Y aún así, aquí lo tienes, vivo, respirando. Todo un enigma. Un ejemplar único. Me pertenece.
+~ Name("V")
+—No es un objeto.
+~ Name("___")
+Espetó V, su voz tan fría como firme.
+Pigstep abrió sus brazos como si fuera a dar un discurso.
+~ Name("Pigstep")
+—Todo en este mundo <i>es</i> un objeto, cazador. Todo tiene un precio. Lo que tú llamas vida, yo lo llamo inversión. 
+—Lo que tú ves como un niño perdido, es el sueño de cualquier coleccionista de rarezas. Tú no lo entiendes. Pero yo sí.
+~ Name("___")
+ El aire en las “raíces” del pueblo era denso. V sentía los dedos de Somi aferrados a su capa mientras el rechoncho coleccionista hablaba con una sonrisa torcida.
+~ Name("Pigstep")
+—Ese niño no es tuyo, cazador. Me pertenece. Dámelo y quizás te ofrezca una vida cómoda. 
+—Ropa, comida, una casa con chimenea... hasta podrías dejar de cazar Dant’ir por unas monedas.
+~ Name("___")
+V dudaba. Pigstep chasqueó los dedos y sus matones se acercaron.
+-> choice_proteger
+
+=== choice_proteger ===
+#timed
+*  Negarse y proteger a Somi. -> historia_continua4
+* Aceptar la oferta y entregar al niño. -> Bad_End_4
+
+=== Bad_End_4 ===
+text
+#change_scene: Game Over
+-> END
+
+=== historia_continua4 ===
+~ HideCharacter("v")
+~ HideCharacter("kid")
+~ CharacterIcon("v")
+~ Expression("angry")
+~ CharacterIcon("kid")
+~ Expression("scared")
+El silencio que siguió fue espeso. El crujido de la madera bajo los pies de Pigstep pareció resonar como un trueno. V dio un paso atrás, y en ese instante, Pigstep sonrió.
+~ Name("Pigstep")
+—Creo que ya he tenido suficiente charla.
+~ Name("___")
+Pigstep chasqueo los dedos.
+~ Name("Pigstep")
+—Atrapad al mocoso.
+~ Name("___")
+Los guardias se lanzaron sin dudar. 
+El primero avanzó con una velocidad sorprendente, desenfundando su cuchillo.
+V reaccionó por puro instinto: se agachó, desenvainó una flecha de su carcaja y disparó.
+La flecha se clavó en el hombro del atacante, haciéndolo gritar y trastabillar hacia un costado.
+El segundo fue más precavido.
+Blandió su látigo y lo lanzó hacia Somi. 
+V lo interceptó con el antebrazo, sintiendo el dolor ardiente del impacto, pero no se detuvo.
+Con la mano libre, desenvainó su cuchillo de caza y cargó contra él.
+El segundo guardia intentó esquivarlo, pero V ya estaba encima, le dio un codazo en el rostro y lo lanzó contra un barril que se hizo añicos.
+~ Name("Pigstep")
+—<b>¡BASTA!</b>
+~ Name("___")
+Pigstep chilló, retrocediendo unos pasos, sus patas tambaleándose bajo el peso.
+~ Name("Pigstep")
+—¡No sabes lo que haces! ¡No puedes escapar! ¡Tarde o temprano, me lo llevaré! ¡Ese niño no tiene cabida en este mundo!
+~ Name("___")
+V levantó el arco de nuevo y apuntó directo al centro del monóculo. Pigstep alzó ambas manos, temblando.
+~ Name("Pigstep")
+—¡Lo juro! ¡Te arrepentirás! ¡¡No sabes con quién te estás metiendo!!
+~ Name("___")
+Pero ya era tarde. V se giró, alzó a Somi y echó a correr, perdiéndose entre las sombras del callejón.
+~ HideCharacter("v")
+~ CharacterIcon("v")
+Dejaron atrás el corazón de Frisbar, descendiendo hasta las raíces más profundas, corriendo por caminos ocultos que V conocía de su niñez. 
+Nadie los persiguió. Al menos por ahora. La espesura del bosque los acogió con su silencio húmedo y susurros verdes.
+Somi, aunque temblaba, no lloraba.
+V lo apretó con más fuerza contra su pecho. Algo en su interior había cambiado. Ya no era solo un acto de compasión. 
+Era una decisión.
+~ Name("V")
+—Estás conmigo ahora. Y nadie volverá a poner un dedo sobre ti.
+~ Name("___")
+~ Expression("happy")
+Ambos desaparecieron entre los árboles. Sin rumbo, sin mapa, pero juntos.
+#change_scene: Final
 -> END
