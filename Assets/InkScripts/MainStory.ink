@@ -21,11 +21,33 @@ Sin embargo, justo cuando empezaba su camino a casa, escuchó unos fuertes aulli
 -> aullidos
 
 === aullidos ===
-* [Ir a investigar los aullidos] -> historia_continua
-* [Ignorar los sonidos y regresar a casa] -> Bad_End_1
+* Ir a investigar los aullidos -> historia_continua
+* Ignorar los sonidos y regresar a casa -> Bad_End_1
 
 === Bad_End_1 ===
-texto
+~ Name("___")
+~ HideCharacter("v")
+~ CharacterIcon("v")
+V se detuvo por un momento, pero negó con la cabeza.
+~ Name("V")
+<i>No me meteré en más problemas hoy. Lo último que necesito es enfrentarme a una manada.</i>
+~ Name("___")
+ Volvió a su cabaña, cenó en silencio y se acostó, aunque esa noche, el bosque no dejó de crujir y murmurar.
+<b>[Al día siguiente…]</b>
+V salió temprano a cazar.
+Se internó en la misma dirección de los aullidos del día anterior, no por remordimiento, sino porque algo en el aire olía mal.
+No tardó en encontrarlo.
+ El claro estaba silencioso. Los cuerpos de varios Dant’ir pequeños yacían alrededor. En el centro, un bulto cubierto por una capa gris desgarrada.
+V se acercó lentamente.
+Cuando apartó la tela, su estómago se revolvió.
+Era el cuerpo de un niño. Pálido, mordisqueado, cubierto de heridas. Su rostro seguía mirando al cielo, ojos abiertos, como si aún esperara que alguien viniera a ayudarlo.
+~ Name("V")
+—…llegué tarde.
+~ Name("___")
+Por primera vez en años, V no recogió sus presas. Se marchó en silencio, sin volver la vista atrás.
+No volvió a dormir bien.
+Y nunca sabría la verdad sobre lo que aquel niño era… ni lo que pudo haber cambiado su destino.
+<b>Final alternativo desbloqueado: “El cazador que llegó tarde”</b>
 #change_scene: Game Over
 -> END
 
@@ -75,11 +97,36 @@ Sus manos tiemblan. Tiene el arco cargado, la cuerda tensa, la punta de la flech
 
 === choice_disparar ===
 #timed
-* [Dispara al niño.] -> Bad_End_2
-* [No dispara] -> no_dispara
+* Dispara al niño. -> Bad_End_2
+* No dispara -> no_dispara
 
 === Bad_End_2 ===
-texto //falta añadir el final
+~ Name("___")
+~ HideCharacter("v")
+~ CharacterIcon("v")
+V contuvo el aliento. Una imagen le vino a la cabeza: los cuentos de su infancia, las criaturas sin alas, devoradoras de Hek.
+Su dedo se aflojó.
+La flecha voló.
+Rápida. Silenciosa. Precisa.
+~ CharacterIcon("kid")
+El niño ni siquiera gritó. Solo cayó de espaldas con los ojos muy abiertos. La capa gris se tiñó lentamente de rojo.
+~ HideCharacter("kid")
+V no se movió durante varios minutos. Luego, se acercó.
+El cuerpo era pequeño. Frágil. Nada más que un crío. Ni monstruo, ni asesino. Solo un niño.
+~ Name("V")
+—No tenía por qué ser así...
+~ Name("___")
+No lo enterró. No tenía valor.
+Simplemente dio media vuelta y se marchó del claro, con una punzada clavada en la nuca que ya no lo abandonaría.
+<b>[Días después…]</b>
+Algo empezó a moverse en el bosque.
+Los Dant’ir se volvieron más violentos. Más organizados.
+Rumores de criaturas nunca vistas empezaron a correr por las ciudades.
+V ignoró todo eso.
+Pero una noche, al regresar a casa, su cabaña estaba ardiendo.
+Y desde los árboles…
+…alguien lo observaba.
+<b>Final alternativo desbloqueado: “El arquero sin fe”</b>
 #change_scene: Game Over
 -> END
 
@@ -211,7 +258,36 @@ V suspiró.
 * Dejar al niño solo en la cabaña mientras vas a investigar. -> Bad_End_3
 
 === Bad_End_3 ===
-text
+~ Name("___")
+~ HideCharacter("v")
+~ HideCharacter("kid")
+~ CharacterIcon("v")
+~ CharacterIcon("kid")
+~ Background("House2_Background")
+V se agachó, lo miró a los ojos y le dijo en voz baja:
+~ Name("V")
+—Esperaré a que hables. No puedo arriesgarme aún. Quédate aquí. Volveré.
+~ Name("___")
+El niño no respondió. Solo bajó la mirada y abrazó sus rodillas.
+~ HideCharacter("kid")
+~ Background("Forest_Background")
+V partió hacia el bosque, buscando información. 
+Pero al regresar, unas horas después...
+~ Background("House2_Background")
+La cabaña estaba abierta.
+La cama revuelta.
+Pequeñas huellas marcadas en el barro...
+Y sangre.
+~ Background("Forest_Background")
+V siguió el rastro. No era largo. Solo unos pasos más allá, entre los arbustos, encontró restos de ropa. Una tela marrón, rasgada. El cuerpo no estaba.
+Solo marcas de garras… y un silencio demasiado limpio.
+~ Name("V")
+—Te dejé solo…
+~ Name("___")
+V nunca supo si el niño había sido un monstruo o un milagro.
+Solo supo que, al tomar distancia, lo perdió todo.
+Y con él… quizás el destino del mundo.
+<b>Final alternativo desbloqueado: “El abandono silencioso”</b>
 #change_scene: Game Over
 -> END
 
@@ -340,7 +416,43 @@ V dudaba. Pigstep chasqueó los dedos y sus matones se acercaron.
 * Aceptar la oferta y entregar al niño. -> Bad_End_4
 
 === Bad_End_4 ===
-text
+~ Name("___")
+~ HideCharacter("v")
+~ HideCharacter("kid")
+~ CharacterIcon("v")
+~ CharacterIcon("kid")
+~ Expression("scared")
+~ Background("Forest_Background")
+V miró a Pigstep, luego al niño. Sintió el temblor en sus manos, la presión del momento, y el miedo…
+El miedo a lo que podría venir si se equivocaba.
+Soltó la mano de Somi.
+~ Name("V")
+—Haz lo que quieras. Yo solo soy un cazador. No me pagan por hacer preguntas.
+~ Name("___")
+~ HideCharacter("kid")
+~ CharacterIcon("kid")
+Somi no dijo nada. Ni gritó. Ni lloró. Solo bajó la cabeza mientras los matones lo sujetaban de los brazos.
+Pigstep rió satisfecho.
+~ Name("Pigstep")
+—Sabia decisión, cazador. Has evitado problemas innecesarios. Te enviaré tu pago… si sobrevives el tiempo suficiente para gastarlo.
+~ Name("___")
+~ HideCharacter("kid")
+V se marchó sin mirar atrás.
+<b>[Días después…]</b>
+Los rumores en Frisbar se descontrolaron.
+Una criatura extraña fue vista encerrada en una jaula, exhibida en un mercado de rarezas.
+Un niño, decían algunos.
+Una maldición viva, decían otros.
+Una semana más tarde, una extraña energía empezó a extenderse desde las zonas oscuras del bosque. 
+Los Dant’ir se volvieron más feroces. Algunos incluso empezaron a “organizarse”, atacando pueblos en grupo, destruyendo granjas y devorando sin control.
+V volvió a su cabaña. Se sentó frente a la chimenea.
+La bolsa de monedas brillaba junto a sus botas.
+~ Name("V")
+—No era solo un niño, ¿verdad…?
+~ Name("___")
+La guerra había comenzado.
+Y el cazador… se convirtió en testigo de su propio error.
+<b>Final alternativo desbloqueado: “El precio del silencio”</b>
 #change_scene: Game Over
 -> END
 
