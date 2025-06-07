@@ -8,11 +8,13 @@ public class GameManager : MonoBehaviour
     public int maxLives = 3;
     private int currentLives;
 
-    public int maxTargets = 5;
+    public int maxTargets = 10; // Ahora se gana al destruir 10 enemigos
     private int targetsRemaining;
 
     public GameObject gameOverPanel;
     public GameObject winPanel;
+    private TargetSpawner targetSpawner;
+
 
     void Awake()
     {
@@ -33,6 +35,9 @@ public class GameManager : MonoBehaviour
         targetsRemaining = maxTargets;
 
         UIManager.Instance.UpdateLives(currentLives);
+        targetSpawner = FindFirstObjectByType<TargetSpawner>();
+
+
     }
 
     public void LoseLife()
@@ -77,15 +82,29 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        
         currentLives = maxLives;
         targetsRemaining = maxTargets;
 
         UIManager.Instance.UpdateLives(currentLives);
         gameOverPanel.SetActive(false);
+        winPanel.SetActive(false);
         Time.timeScale = 1f;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        // Eliminar enemigos activos
+        foreach (Target t in FindObjectsByType<Target>(FindObjectsSortMode.None))
+        {
+            Destroy(t.gameObject);
+        }
+
+        // Reiniciar spawner
+        if (targetSpawner == null)
+            targetSpawner = FindFirstObjectByType<TargetSpawner>();
+
+        targetSpawner.RestartSpawner();
     }
+
+
+
 
     public void QuitGame()
     {

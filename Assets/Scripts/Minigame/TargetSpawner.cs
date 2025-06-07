@@ -28,4 +28,12 @@ public class TargetSpawner : MonoBehaviour
         Instantiate(targetPrefab, spawnPos, Quaternion.identity);
         spawnedTargets++;
     }
+    public void RestartSpawner()
+    {
+        CancelInvoke(nameof(SpawnTarget));
+        spawnedTargets = 0;
+        InvokeRepeating(nameof(SpawnTarget), 1f, spawnInterval);
+    }
+
+
 }
