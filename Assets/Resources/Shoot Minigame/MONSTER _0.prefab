@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 28270941271704709}
   - component: {fileID: 5914215940990539003}
   m_Layer: 0
-  m_Name: MONSTER TEST_0
+  m_Name: MONSTER _0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 298408000062507512, guid: 6da92d8afb9323341b10cb2033c05692, type: 3}
+  m_Sprite: {fileID: -7482177786666212508, guid: 4b1cd0a5748d3ef4daa6fbeb690da478, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,7 +143,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 9.99, y: 9.18}
     newSize: {x: 10.24, y: 10.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
