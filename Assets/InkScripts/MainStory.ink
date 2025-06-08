@@ -85,6 +85,7 @@ De pronto, se le vino a la cabeza una historia que le contaron cuando era peque�
 Una sobre unas criaturas con un color de piel muy diferente a los Hek, sin alas y de un tamaño menor a ellos.
 Unas criaturas horribles y malvadas que cazaban a los Hek por diversión.
 Los humanos.
+~ Expression("surprised")
 En cuanto a V se le pasó por la cabeza aquella historia, dudó.
 ~ Name("V")
 <i>Es imposible que sea un humano, ¿verdad?</i>
@@ -203,7 +204,7 @@ V abrió un cajón y sacó de él una camisa marrón algo gastada y se la puso a
 Le quedaba enorme, casi parecía un vestido, pero era lo mejor que podía darle en ese momento, ya que la ropa que llevaba Somi estaba destrozada por los arañazos de los Dant’ir. 
 ~ HideCharacter("kid")
 ~ HideCharacter("v")
-// change scene: food choice
+#change scene: PointClick
 ~ CharacterIcon("v")
 ~ Expression("happyV")
 V sonrió, pero inmediatamente apartó esa expresión de su cara.
