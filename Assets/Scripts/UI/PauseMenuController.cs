@@ -57,6 +57,25 @@ public class PauseMenuController : MonoBehaviour
 
     public void MenuButton()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Title");
     }
+
+    public void SaveButton()
+    {
+        ScriptReader reader = UnityEngine.Object.FindFirstObjectByType<ScriptReader>();
+        if (reader != null)
+        {
+            System.Reflection.FieldInfo storyField = typeof(ScriptReader).GetField("_StoryScript", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            if (storyField != null)
+            {
+                Ink.Runtime.Story story = (Ink.Runtime.Story)storyField.GetValue(reader);
+                SaveManager.SaveGame(story);
+            }
+        }
+
+        isPaused = false;
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
 }

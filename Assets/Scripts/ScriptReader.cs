@@ -41,7 +41,7 @@ public class ScriptReader : MonoBehaviour
 
     void Update()
     {
-        if (_StoryScript == null) return;
+        if (PauseMenuController.isPaused || _StoryScript == null) return;
 
         if (timerRunning && !choiceMade)
         {
@@ -63,16 +63,21 @@ public class ScriptReader : MonoBehaviour
         }
     }
 
+
     void LoadStory()
     {
         _StoryScript = new Story(_InkJsonFile.text);
 
-        if (PlayerPrefs.HasKey("Game"))
+        if (PlayerPrefs.GetInt("FromMainMenu", 0) == 2)
         {
-            string savedState = PlayerPrefs.GetString("Game");
-            _StoryScript.state.LoadJson(savedState);
-            PlayerPrefs.DeleteKey("Game");
+            string savedState = SaveManager.GetSavedInkState();
+            if (!string.IsNullOrEmpty(savedState))
+            {
+                _StoryScript.state.LoadJson(savedState);
+            }
         }
+
+        PlayerPrefs.SetInt("FromMainMenu", 0); 
 
         _StoryScript.BindExternalFunction("Name", (string charName) => ChangeName(charName));
         _StoryScript.BindExternalFunction("CharacterIcon", (string charName) => ShowCharacter(charName));
@@ -82,6 +87,7 @@ public class ScriptReader : MonoBehaviour
 
         DisplayNextLine();
     }
+
 
     public void DisplayNextLine()
     {
