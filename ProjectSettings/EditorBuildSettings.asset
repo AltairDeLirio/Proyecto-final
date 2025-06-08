@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Minigame_shoot.unity
     guid: 64cd57bde50596449ab7b219070786d7
   - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: 6492314c244676544b30a4d96c35e65c
+  - enabled: 1
+    path: Assets/Scenes/Minigame_PointClick.unity
+    guid: 6aeee7cfe3850e448b425e4fd4be4ee5
+  - enabled: 1
     path: Assets/Scenes/Final.unity
     guid: 44e39219134f0984c827f424e22ca15b
   m_configObjects:
