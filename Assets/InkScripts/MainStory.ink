@@ -77,7 +77,8 @@ Sin embargo, lo que V no se esperaba en aquel momento era encontrarse algo total
 Cuando V levantó esa capa, vió a una criatura de piel blanca, sin ninguna marca distintiva, más allá de ser una piel extremadamente lisa, y un cabello negro profundo.
 Era raro, porque V nunca había visto nada similar antes.
 Con curiosidad, se fijó todavía más en lo que había encontrado.
-Lo movió un poco para verlo mejor y pudo observar las similitudes que tenía con un niño Hek corriente. Pero lo que le preocupó no fue solo que el color de piel no coincidía con los de un Hek normal.
+Lo movió un poco para verlo mejor y pudo observar las similitudes que tenía con un niño Hek corriente. 
+Pero lo que le preocupó no fue solo que el color de piel no coincidía con los de un Hek normal.
 No, eso era lo de menos.
 Lo que de verdad le preocupaba era no ver ni rastro de alas, cuernos o grandes colmillos en aquella criatura.
 Empezó a asustarse, nunca había visto nada igual. No conocía a ninguna criatura similar, pese a todos sus años siendo cazador.
@@ -150,14 +151,15 @@ Estaba claramente asustado y V pudo verlo.
 Aún tenía dudas, pero bajó su arco y se empezó a acercar poco a poco a aquella criatura.
 ~ Name("V")
 ¿Quién eres?
-Qué haces aquí tú solo?
+¿Qué haces aquí tú solo?
 ~ Name("___")
 Pero no hubo respuesta por parte del niño, tan solo unos sonidos vacíos que V no lograba comprender.
 El niño cayó de espaldas tras tropezar con una rama y soltó un pequeño grito de dolor. Le brotaron lágrimas de los ojos.
 ~ Expression("sad")
 V se acercó torpemente hacía él, no sabía si sería buena idea tocarlo, pero por todos los demonios, solo era un niño, ¿no?
 Así que se arrodilló a su lado y le tendió el brazo. El niño, desconfiado, lo aceptó y se puso de pie.
-Efectivamente, apenas le llegaba a las rodillas a V. La pequeña criatura se abrazó fuertemente a la pierna de V y continuó sollozando.
+Efectivamente, apenas le llegaba a las rodillas a V. 
+La pequeña criatura se abrazó fuertemente a la pierna de V y continuó sollozando.
 V se planteó apartarlo de su pierna, pero enseguida entendió que tan solo estaba asustado y hambriento.
 Aún tenía dudas, pero V agarró al niño de los hombros y lo elevó hasta colocarlo sobre los suyos.
 ~ Name("V")
@@ -172,11 +174,14 @@ Pusieron rumbo a casa. V seguía preocupado, no estaba seguro de si eso era buen
 ~ Background("House2_Background")
 La casa de V era muy pequeña. Tenía una sola habitación, dondé se encontraba su cama rellena de hojas y pasto y una pequeña sábana vieja.
 ambién había una silla y una mesa de madera redonda y desgastada y lo que parecía una chimenea improvisada con un caldero y una parrilla para asar algo. 
-No contaba con baño, pues este se encontraba fuera. V hacía sus necesidades en el propio bosque y se bañaba en una bañera de madera que calentaba el agua como si fuese una olla. Agua que tenía que traer a mano, por lo que no la cambiaba muy a menudo. 
+No contaba con baño, pues este se encontraba fuera. 
+V hacía sus necesidades en el propio bosque y se bañaba en una bañera de madera que calentaba el agua como si fuese una olla. 
+Agua que tenía que traer a mano, por lo que no la cambiaba muy a menudo. 
 Ambos entraron en casa y el niño parecía desconcertado.
 V intentó preguntarle el nombre a la criatura varias veces, pero este no parecía entenderle, por lo que decidió llamarle Somi, igual que se llamaba su madre.
 V echó un poco de agua en el caldero y encendió un fuego.
-Sacó una de las aves que había cazado antes y la colocó sobre la mesa. Empezó a desplumarla y una vez hecho, arrancó su cabeza con un cuchillo y abrió su vientre para sacarle las tripas.
+Sacó una de las aves que había cazado antes y la colocó sobre la mesa. 
+Empezó a desplumarla y una vez hecho, arrancó su cabeza con un cuchillo y abrió su vientre para sacarle las tripas.
 Somi miró curioso la escena, pero no pareció sorprenderle.
 Cuando V tuvo al ave totalmente lista y el agua ya estaba hirviendo, la echó en el caldero sin preocuparse demasiado por sazonarla o por el tiempo de cocinado.
 En vez de eso, salió fuera y encendió el fuego de su bañera para calentar el agua. 
@@ -204,7 +209,8 @@ V abrió un cajón y sacó de él una camisa marrón algo gastada y se la puso a
 Le quedaba enorme, casi parecía un vestido, pero era lo mejor que podía darle en ese momento, ya que la ropa que llevaba Somi estaba destrozada por los arañazos de los Dant’ir. 
 ~ HideCharacter("kid")
 ~ HideCharacter("v")
-#change scene: PointClick
+#change_scene: Minigame_PointClick
+~ Background("House2_Background")
 ~ CharacterIcon("v")
 ~ Expression("happyV")
 V sonrió, pero inmediatamente apartó esa expresión de su cara.
