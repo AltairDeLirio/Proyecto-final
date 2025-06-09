@@ -63,12 +63,14 @@ public class ScriptReader : MonoBehaviour
         }
     }
 
-
     void LoadStory()
     {
         _StoryScript = new Story(_InkJsonFile.text);
 
-        if (PlayerPrefs.GetInt("FromMainMenu", 0) == 2)
+        bool fromMainMenu = PlayerPrefs.GetInt("FromMainMenu", 0) == 1;
+        bool returningToStory = PlayerPrefs.GetInt("ReturningToStory", 0) == 1;
+
+        if (!fromMainMenu && SaveManager.HasSaveData())
         {
             string savedState = SaveManager.GetSavedInkState();
             if (!string.IsNullOrEmpty(savedState))
@@ -77,7 +79,8 @@ public class ScriptReader : MonoBehaviour
             }
         }
 
-        PlayerPrefs.SetInt("FromMainMenu", 0); 
+        PlayerPrefs.SetInt("FromMainMenu", 0);
+        PlayerPrefs.SetInt("ReturningToStory", 0);
 
         _StoryScript.BindExternalFunction("Name", (string charName) => ChangeName(charName));
         _StoryScript.BindExternalFunction("CharacterIcon", (string charName) => ShowCharacter(charName));
@@ -87,7 +90,6 @@ public class ScriptReader : MonoBehaviour
 
         DisplayNextLine();
     }
-
 
     public void DisplayNextLine()
     {
@@ -108,8 +110,11 @@ public class ScriptReader : MonoBehaviour
                 if (tag.StartsWith("change_scene:"))
                 {
                     string targetScene = tag.Split(':')[1].Trim();
+
                     PlayerPrefs.SetString("Game", _StoryScript.state.ToJson());
+                    PlayerPrefs.SetInt("ReturningToStory", 1); // <- mark we’re returning later
                     PlayerPrefs.Save();
+
                     SceneManager.LoadScene(targetScene);
                     return;
                 }
