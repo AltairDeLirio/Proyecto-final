@@ -838,7 +838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 988204565391943413, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 1406321336833839006, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
       propertyPath: m_Sprite
@@ -954,11 +954,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2221021615200119260, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 225
       objectReference: {fileID: 0}
     - target: {fileID: 2221021615200119260, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -175
       objectReference: {fileID: 0}
     - target: {fileID: 2614994548364344504, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
       propertyPath: m_Sprite
@@ -1126,7 +1126,7 @@ PrefabInstance:
       objectReference: {fileID: 581831675975397177, guid: 31eaf24d0bfe731438104b93979786b9, type: 3}
     - target: {fileID: 5420107716121012280, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5524479902894310577, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
       propertyPath: m_Sprite
@@ -1198,7 +1198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7130193859988121100, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 7400400418473487957, guid: 701f86df32417db4f86f6ae047cabcd8, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2927,11 +2927,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6641092753452626337, guid: f83cb680d2ff4364f8d5e734e622e547, type: 3}
       propertyPath: Loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6641092753452626337, guid: f83cb680d2ff4364f8d5e734e622e547, type: 3}
       propertyPath: Priority
       value: 159
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641092753452626337, guid: f83cb680d2ff4364f8d5e734e622e547, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6641092753452626337, guid: f83cb680d2ff4364f8d5e734e622e547, type: 3}
       propertyPath: m_Resource
