@@ -41,7 +41,7 @@ public class ScriptReader : MonoBehaviour
 
     void Update()
     {
-        if (PauseMenuController.isPaused || _StoryScript == null) return;
+        if (_StoryScript == null) return;
 
         if (timerRunning && !choiceMade)
         {
@@ -67,20 +67,12 @@ public class ScriptReader : MonoBehaviour
     {
         _StoryScript = new Story(_InkJsonFile.text);
 
-        bool fromMainMenu = PlayerPrefs.GetInt("FromMainMenu", 0) == 1;
-        bool returningToStory = PlayerPrefs.GetInt("ReturningToStory", 0) == 1;
-
-        if (!fromMainMenu && SaveManager.HasSaveData())
+        if (PlayerPrefs.HasKey("Game"))
         {
-            string savedState = SaveManager.GetSavedInkState();
-            if (!string.IsNullOrEmpty(savedState))
-            {
-                _StoryScript.state.LoadJson(savedState);
-            }
+            string savedState = PlayerPrefs.GetString("Game");
+            _StoryScript.state.LoadJson(savedState);
+            PlayerPrefs.DeleteKey("Game");
         }
-
-        PlayerPrefs.SetInt("FromMainMenu", 0);
-        PlayerPrefs.SetInt("ReturningToStory", 0);
 
         _StoryScript.BindExternalFunction("Name", (string charName) => ChangeName(charName));
         _StoryScript.BindExternalFunction("CharacterIcon", (string charName) => ShowCharacter(charName));
@@ -110,11 +102,8 @@ public class ScriptReader : MonoBehaviour
                 if (tag.StartsWith("change_scene:"))
                 {
                     string targetScene = tag.Split(':')[1].Trim();
-
                     PlayerPrefs.SetString("Game", _StoryScript.state.ToJson());
-                    PlayerPrefs.SetInt("ReturningToStory", 1); // <- mark we’re returning later
                     PlayerPrefs.Save();
-
                     SceneManager.LoadScene(targetScene);
                     return;
                 }
